@@ -3,6 +3,7 @@ package com.backend.batch26.model;
 import java.sql.Timestamp;
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -13,21 +14,29 @@ import javax.persistence.Table;
 @Table(name = "tb_m_travel_type")
 public class TravelType {
     @Id
+    @Column(name="id")
     private int id;
+    @Column( name = "name")
     private String name;
-    private int stock_availability;
-    private int created_by;
-    private int updated_by;
-    private int deleted_by;
-    private Timestamp created_on;
-    private Timestamp updated_on;
-    private Timestamp deleted_on;
-    private boolean is_deleted;
+    @Column( name = "stock_availability")
+    private int stockAvailability;
+    @Column( name = "created_by")
+    private int createdBy;
+    @Column( name = "updated_by")
+    private int updatedBy;
+    @Column( name = "deleted_by")
+    private int deletedBy;
+    @Column( name = "created_on")
+    private Timestamp createdOn;
+    @Column( name = "updated_on")
+    private Timestamp updatedOn;
+    @Column( name = "deleted_on")
+    private Timestamp deletedOn;
+    @Column( name = "is_deleted")
+    private boolean isDeleted;
 
-    @OneToMany(mappedBy = "travel_type_id")
+    @OneToMany(mappedBy = "travelTypeId")
     private Set<TravelRequest> travelRequests;
-
-    
 
     public int getId() {
         return id;
@@ -41,53 +50,56 @@ public class TravelType {
     public void setName(String name) {
         this.name = name;
     }
-    public int getStock_availability() {
-        return stock_availability;
+    
+    
+
+    public int getStockAvailability() {
+        return stockAvailability;
     }
-    public void setStock_availability(int stock_availability) {
-        this.stock_availability = stock_availability;
+    public void setStockAvailability(int stockAvailability) {
+        this.stockAvailability = stockAvailability;
     }
-    public int getCreated_by() {
-        return created_by;
+    public int getCreatedBy() {
+        return createdBy;
     }
-    public void setCreated_by(int created_by) {
-        this.created_by = created_by;
+    public void setCreatedBy(int createdBy) {
+        this.createdBy = createdBy;
     }
-    public int getUpdated_by() {
-        return updated_by;
+    public int getUpdatedBy() {
+        return updatedBy;
     }
-    public void setUpdated_by(int updated_by) {
-        this.updated_by = updated_by;
+    public void setUpdatedBy(int updatedBy) {
+        this.updatedBy = updatedBy;
     }
-    public int getDeleted_by() {
-        return deleted_by;
+    public int getDeletedBy() {
+        return deletedBy;
     }
-    public void setDeleted_by(int deleted_by) {
-        this.deleted_by = deleted_by;
+    public void setDeletedBy(int deletedBy) {
+        this.deletedBy = deletedBy;
     }
-    public Timestamp getCreated_on() {
-        return created_on;
+    public Timestamp getCreatedOn() {
+        return createdOn;
     }
-    public void setCreated_on(Timestamp created_on) {
-        this.created_on = created_on;
+    public void setCreatedOn(Timestamp createdOn) {
+        this.createdOn = createdOn;
     }
-    public Timestamp getUpdated_on() {
-        return updated_on;
+    public Timestamp getUpdatedOn() {
+        return updatedOn;
     }
-    public void setUpdated_on(Timestamp updated_on) {
-        this.updated_on = updated_on;
+    public void setUpdatedOn(Timestamp updatedOn) {
+        this.updatedOn = updatedOn;
     }
-    public Timestamp getDeleted_on() {
-        return deleted_on;
+    public Timestamp getDeletedOn() {
+        return deletedOn;
     }
-    public void setDeleted_on(Timestamp deleted_on) {
-        this.deleted_on = deleted_on;
+    public void setDeletedOn(Timestamp deletedOn) {
+        this.deletedOn = deletedOn;
     }
-    public boolean isIs_deleted() {
-        return is_deleted;
+    public boolean isDeleted() {
+        return isDeleted;
     }
-    public void setIs_deleted(boolean is_deleted) {
-        this.is_deleted = is_deleted;
+    public void setDeleted(boolean isDeleted) {
+        this.isDeleted = isDeleted;
     }
     public Set<TravelRequest> getTravelRequests() {
         return travelRequests;

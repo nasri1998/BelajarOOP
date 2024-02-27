@@ -1,7 +1,9 @@
 package com.backend.batch26.model;
 
 import java.sql.Timestamp;
+import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -11,21 +13,34 @@ import javax.persistence.OneToOne;
 public class TravelSettlement {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int id;
     // private int travel_request_id;
-    private int travel_fee;
-    private int created_by;
-    private int updated_by;
-    private int deleted_by;
-    private Timestamp created_on;
-    private Timestamp updated_on;
-    private Timestamp deleted_on;
-    private boolean is_deleted;
+    @Column( name = "travel_fee")
+    private int travelFee;
+    @Column( name = "created_by")
+    private int createdBy;
+    @Column( name = "updated_by")
+    private int updatedBy;
+    @Column( name = "deleted_by")
+    private int deletedBy;
+    @Column( name = "created_on")
+    private Timestamp createdOn;
+    @Column( name = "updated_on")
+    private Timestamp updatedOn;
+    @Column( name = "deleted_on")
+    private Timestamp deletedOn;
+    @Column( name = "is_deleted")
+    private boolean isDeleted;
 
+    // @OneToOne(mappedBy = "id")
+    // private TravelRequest travel_request_id;
+    
     @OneToOne
     @JoinColumn(name = "id", nullable = false)
-    private TravelRequest travel_request_id;
-    
+    @Column(name = "travel_request_id")
+    private TravelRequest travelRequestId;
+
 
     public int getId() {
         return id;
@@ -33,60 +48,62 @@ public class TravelSettlement {
     public void setId(int id) {
         this.id = id;
     }
-    public int getTravel_request_id() {
-        return travel_request_id;
-    }
-    public void setTravel_request_id(int travel_request_id) {
-        this.travel_request_id = travel_request_id;
-    }
-    public int getTravel_fee() {
-        return travel_fee;
-    }
-    public void setTravel_fee(int travel_fee) {
-        this.travel_fee = travel_fee;
-    }
-    public int getCreated_by() {
-        return created_by;
-    }
-    public void setCreated_by(int created_by) {
-        this.created_by = created_by;
-    }
-    public int getUpdated_by() {
-        return updated_by;
-    }
-    public void setUpdated_by(int updated_by) {
-        this.updated_by = updated_by;
-    }
-    public int getDeleted_by() {
-        return deleted_by;
-    }
-    public void setDeleted_by(int deleted_by) {
-        this.deleted_by = deleted_by;
-    }
-    public Timestamp getCreated_on() {
-        return created_on;
-    }
-    public void setCreated_on(Timestamp created_on) {
-        this.created_on = created_on;
-    }
-    public Timestamp getUpdated_on() {
-        return updated_on;
-    }
-    public void setUpdated_on(Timestamp updated_on) {
-        this.updated_on = updated_on;
-    }
-    public Timestamp getDeleted_on() {
-        return deleted_on;
-    }
-    public void setDeleted_on(Timestamp deleted_on) {
-        this.deleted_on = deleted_on;
-    }
-    public boolean isIs_deleted() {
-        return is_deleted;
-    }
-    public void setIs_deleted(boolean is_deleted) {
-        this.is_deleted = is_deleted;
-    }
 
+    
+    public int getTravelFee() {
+        return travelFee;
+    }
+    public void setTravelFee(int travelFee) {
+        this.travelFee = travelFee;
+    }
+    public int getCreatedBy() {
+        return createdBy;
+    }
+    public void setCreatedBy(int createdBy) {
+        this.createdBy = createdBy;
+    }
+    public int getUpdatedBy() {
+        return updatedBy;
+    }
+    public void setUpdatedBy(int updatedBy) {
+        this.updatedBy = updatedBy;
+    }
+    public int getDeletedBy() {
+        return deletedBy;
+    }
+    public void setDeletedBy(int deletedBy) {
+        this.deletedBy = deletedBy;
+    }
+    public Timestamp getCreatedOn() {
+        return createdOn;
+    }
+    public void setCreatedOn(Timestamp createdOn) {
+        this.createdOn = createdOn;
+    }
+    public Timestamp getUpdatedOn() {
+        return updatedOn;
+    }
+    public void setUpdatedOn(Timestamp updatedOn) {
+        this.updatedOn = updatedOn;
+    }
+    public Timestamp getDeletedOn() {
+        return deletedOn;
+    }
+    public void setDeletedOn(Timestamp deletedOn) {
+        this.deletedOn = deletedOn;
+    }
+    public boolean isDeleted() {
+        return isDeleted;
+    }
+    public void setDeleted(boolean isDeleted) {
+        this.isDeleted = isDeleted;
+    }
+    public TravelRequest getTravelRequestId() {
+        return travelRequestId;
+    }
+    public void setTravelRequestId(TravelRequest travelRequestId) {
+        this.travelRequestId = travelRequestId;
+    }
+    
     
 }

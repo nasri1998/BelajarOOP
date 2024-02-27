@@ -3,70 +3,64 @@ package com.backend.batch26.model;
 import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.util.Set;
-
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "tb_m_employee")
 public class Employee {
     @Id
+    @Column( name="id")
     private int id;
-    private String first_name;
-    private String last_name;
-    private LocalDate date_of_birth;
+    @Column( name = "first_name")
+    private String firstName;
+    @Column( name = "last_name")
+    private String lastName;
+    @Column( name = "date_of_birth")
+    private LocalDate dateOfBirth;
+    @Column( name = "address")
     private String address;
     // private int department_id;
+    @Column( name = "salary")
     private int salary;
-    private int created_by;
-    private int updated_by;
-    private int deleted_by;
-    private Timestamp created_on;
-    private Timestamp updated_on;
-    private Timestamp deleted_on;
-    private boolean is_deleted;
+    @Column( name = "created_by")
+    private int createdBy;
+    @Column( name = "updated_by")
+    private int updatedBy;
+    @Column( name = "deleted_by")
+    private int deletedBy;
+    @Column( name = "created_on")
+    private Timestamp createdOn;
+    @Column( name = "updated_on")
+    private Timestamp updatedOn;
+    @Column( name = "deleted_on")
+    private Timestamp deletedOn;
+    @Column( name = "is_deleted")
+    private boolean isDeleted;
 
     @ManyToOne
     @JoinColumn(name = "id", nullable = false)
-    private Department department_id;
+    private Department departmentId;
 
     @OneToMany(mappedBy = "employee_id")
-    private Set<TravelRequest> travelRequest;
+    private Set<TravelRequest> travelRequests;
 
-    public Set<TravelRequest> getTravelRequest() {
-        return travelRequest;
-    }
-    public void setTravelRequest(Set<TravelRequest> travelRequest) {
-        this.travelRequest = travelRequest;
-    }
+    @OneToOne(mappedBy = "id")
+    private User users;
+
     public int getId() {
         return id;
     }
     public void setId(int id) {
         this.id = id;
     }
-    public String getFirst_name() {
-        return first_name;
-    }
-    public void setFirst_name(String first_name) {
-        this.first_name = first_name;
-    }
-    public String getLast_name() {
-        return last_name;
-    }
-    public void setLast_name(String last_name) {
-        this.last_name = last_name;
-    }
-    public LocalDate getDate_of_birth() {
-        return date_of_birth;
-    }
-    public void setDate_of_birth(LocalDate date_of_birth) {
-        this.date_of_birth = date_of_birth;
-    }
+    
     public String getAddress() {
         return address;
     }
@@ -80,54 +74,85 @@ public class Employee {
     public void setSalary(int salary) {
         this.salary = salary;
     }
-    public int getCreated_by() {
-        return created_by;
-    }
-    public void setCreated_by(int created_by) {
-        this.created_by = created_by;
-    }
-    public int getUpdated_by() {
-        return updated_by;
-    }
-    public void setUpdated_by(int updated_by) {
-        this.updated_by = updated_by;
-    }
-    public int getDeleted_by() {
-        return deleted_by;
-    }
-    public void setDeleted_by(int deleted_by) {
-        this.deleted_by = deleted_by;
-    }
-    public Timestamp getCreated_on() {
-        return created_on;
-    }
-    public void setCreated_on(Timestamp created_on) {
-        this.created_on = created_on;
-    }
-    public Timestamp getUpdated_on() {
-        return updated_on;
-    }
-    public void setUpdated_on(Timestamp updated_on) {
-        this.updated_on = updated_on;
-    }
-    public Timestamp getDeleted_on() {
-        return deleted_on;
-    }
-    public void setDeleted_on(Timestamp deleted_on) {
-        this.deleted_on = deleted_on;
-    }
-    public boolean isIs_deleted() {
-        return is_deleted;
-    }
-    public void setIs_deleted(boolean is_deleted) {
-        this.is_deleted = is_deleted;
-    }
-    public Department getDepartment_id() {
-        return department_id;
-    }
-    public void setDepartment_id(Department department_id) {
-        this.department_id = department_id;
-    }
 
+    public String getFirstName() {
+        return firstName;
+    }
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+    public String getLastName() {
+        return lastName;
+    }
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+    public LocalDate getDateOfBirth() {
+        return dateOfBirth;
+    }
+    public void setDateOfBirth(LocalDate dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+    public int getCreatedBy() {
+        return createdBy;
+    }
+    public void setCreatedBy(int createdBy) {
+        this.createdBy = createdBy;
+    }
+    public int getUpdatedBy() {
+        return updatedBy;
+    }
+    public void setUpdatedBy(int updatedBy) {
+        this.updatedBy = updatedBy;
+    }
+    public int getDeletedBy() {
+        return deletedBy;
+    }
+    public void setDeletedBy(int deletedBy) {
+        this.deletedBy = deletedBy;
+    }
+    public Timestamp getCreatedOn() {
+        return createdOn;
+    }
+    public void setCreatedOn(Timestamp createdOn) {
+        this.createdOn = createdOn;
+    }
+    public Timestamp getUpdatedOn() {
+        return updatedOn;
+    }
+    public void setUpdatedOn(Timestamp updatedOn) {
+        this.updatedOn = updatedOn;
+    }
+    public Timestamp getDeletedOn() {
+        return deletedOn;
+    }
+    public void setDeletedOn(Timestamp deletedOn) {
+        this.deletedOn = deletedOn;
+    }
+    public boolean isDeleted() {
+        return isDeleted;
+    }
+    public void setDeleted(boolean isDeleted) {
+        this.isDeleted = isDeleted;
+    }
+    public User getUsers() {
+        return users;
+    }
+    public void setUsers(User users) {
+        this.users = users;
+    }
+    public Set<TravelRequest> getTravelRequests() {
+        return travelRequests;
+    }
+    public void setTravelRequests(Set<TravelRequest> travelRequests) {
+        this.travelRequests = travelRequests;
+    }
+    public Department getDepartmentId() {
+        return departmentId;
+    }
+    public void setDepartmentId(Department departmentId) {
+        this.departmentId = departmentId;
+    }
+    
     
 }

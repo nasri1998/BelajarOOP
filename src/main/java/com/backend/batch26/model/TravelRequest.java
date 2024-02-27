@@ -2,8 +2,8 @@ package com.backend.batch26.model;
 
 import java.sql.Timestamp;
 import java.time.LocalDate;
-import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -15,58 +15,115 @@ import javax.persistence.Table;
 @Table(name = "tb_tr_travel_request")
 public class TravelRequest {
     @Id
-    private int id;
+    @OneToOne(mappedBy = "travelRequestId")
+    @Column(name = "id")
+    private TravelRequest id;
+
     // private int employee_id;
-    private LocalDate start_date;
-    private LocalDate end_date;
-    private String request_status;
+    @Column(name = "start_date")
+    private LocalDate startDate;
+    @Column(name = "end_date")
+    private LocalDate endDate;
+    @Column(name = "request_status")
+    private String requestStatus;
+    @Column(name = "destination")
     private String destination;
+    @Column(name = "remark")
     private String remark;
     // private int travel_type_id;
-    private int created_by;
-    private int updated_by;
-    private int deleted_by;
-    private Timestamp created_on;
-    private Timestamp updated_on;
-    private Timestamp deleted_on;
-    private boolean is_deleted;
+    @Column( name = "created_by")
+    private int createdBy;
+    @Column( name = "updated_by")
+    private int updatedBy;
+    @Column( name = "deleted_by")
+    private int deletedBy;
+    @Column( name = "created_on")
+    private Timestamp createdOn;
+    @Column( name = "updated_on")
+    private Timestamp updatedOn;
+    @Column( name = "deleted_on")
+    private Timestamp deletedOn;
+    @Column( name = "is_deleted")
+    private boolean isDeleted;
 
     @ManyToOne
     @JoinColumn(name = "id", nullable = false)
-    private Employee employee_id;
+    @Column(name = "employee_id")
+    private Employee employeeId;
 
     @ManyToOne
     @JoinColumn(name = "id", nullable = false)
-    private TravelType travel_type_id;
-
-    @OneToOne(mappedBy = "travel_request_id")
-    private Set<TravelSettlement> travelSettlement;
-
-    public int getId() {
+    @Column(name = "travel_type_id")
+    private TravelType travelTypeId; 
+    
+    public TravelRequest getId() {
         return id;
     }
-    public void setId(int id) {
+    public void setId(TravelRequest id) {
         this.id = id;
     }
+    public LocalDate getStartDate() {
+        return startDate;
+    }
+    public void setStartDate(LocalDate startDate) {
+        this.startDate = startDate;
+    }
+    public LocalDate getEndDate() {
+        return endDate;
+    }
+    public void setEndDate(LocalDate endDate) {
+        this.endDate = endDate;
+    }
+    public String getRequestStatus() {
+        return requestStatus;
+    }
+    public void setRequestStatus(String requestStatus) {
+        this.requestStatus = requestStatus;
+    }
+    public int getCreatedBy() {
+        return createdBy;
+    }
+    public void setCreatedBy(int createdBy) {
+        this.createdBy = createdBy;
+    }
+    public int getUpdatedBy() {
+        return updatedBy;
+    }
+    public void setUpdatedBy(int updatedBy) {
+        this.updatedBy = updatedBy;
+    }
+    public int getDeletedBy() {
+        return deletedBy;
+    }
+    public void setDeletedBy(int deletedBy) {
+        this.deletedBy = deletedBy;
+    }
+    public Timestamp getCreatedOn() {
+        return createdOn;
+    }
+    public void setCreatedOn(Timestamp createdOn) {
+        this.createdOn = createdOn;
+    }
+    public Timestamp getUpdatedOn() {
+        return updatedOn;
+    }
+    public void setUpdatedOn(Timestamp updatedOn) {
+        this.updatedOn = updatedOn;
+    }
+    public Timestamp getDeletedOn() {
+        return deletedOn;
+    }
+    public void setDeletedOn(Timestamp deletedOn) {
+        this.deletedOn = deletedOn;
+    }
+    public boolean isDeleted() {
+        return isDeleted;
+    }
+    public void setDeleted(boolean isDeleted) {
+        this.isDeleted = isDeleted;
+    }
     
-    public LocalDate getStart_date() {
-        return start_date;
-    }
-    public void setStart_date(LocalDate start_date) {
-        this.start_date = start_date;
-    }
-    public LocalDate getEnd_date() {
-        return end_date;
-    }
-    public void setEnd_date(LocalDate end_date) {
-        this.end_date = end_date;
-    }
-    public String getRequest_status() {
-        return request_status;
-    }
-    public void setRequest_status(String request_status) {
-        this.request_status = request_status;
-    }
+    
     public String getDestination() {
         return destination;
     }
@@ -79,50 +136,17 @@ public class TravelRequest {
     public void setRemark(String remark) {
         this.remark = remark;
     }
-    
-    public int getCreated_by() {
-        return created_by;
+    public Employee getEmployeeId() {
+        return employeeId;
     }
-    public void setCreated_by(int created_by) {
-        this.created_by = created_by;
+    public void setEmployeeId(Employee employeeId) {
+        this.employeeId = employeeId;
     }
-    public int getUpdated_by() {
-        return updated_by;
+    public TravelType getTravelTypeId() {
+        return travelTypeId;
     }
-    public void setUpdated_by(int updated_by) {
-        this.updated_by = updated_by;
+    public void setTravelTypeId(TravelType travelTypeId) {
+        this.travelTypeId = travelTypeId;
     }
-    public int getDeleted_by() {
-        return deleted_by;
-    }
-    public void setDeleted_by(int deleted_by) {
-        this.deleted_by = deleted_by;
-    }
-    public Timestamp getCreated_on() {
-        return created_on;
-    }
-    public void setCreated_on(Timestamp created_on) {
-        this.created_on = created_on;
-    }
-    public Timestamp getUpdated_on() {
-        return updated_on;
-    }
-    public void setUpdated_on(Timestamp updated_on) {
-        this.updated_on = updated_on;
-    }
-    public Timestamp getDeleted_on() {
-        return deleted_on;
-    }
-    public void setDeleted_on(Timestamp deleted_on) {
-        this.deleted_on = deleted_on;
-    }
-    public boolean isIs_deleted() {
-        return is_deleted;
-    }
-    public void setIs_deleted(boolean is_deleted) {
-        this.is_deleted = is_deleted;
-    }
-    
-
     
 }

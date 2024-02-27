@@ -2,38 +2,54 @@ package com.backend.batch26.model;
 
 import java.sql.Timestamp;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "tb_m_user")
 public class User {
     @Id
-    private int id;
+    @OneToOne
+    @JoinColumn(name = "id", nullable = false)
+    @Column(name = "id")
+    private Employee id;
+    @Column(name = "username")
     private String username;
+    @Column(name="password")
     private String password;
     // private int role_id;
-    private int created_by;
-    private int updated_by;
-    private int deleted_by;
-    private Timestamp created_on;
-    private Timestamp updated_on;
-    private Timestamp deleted_on;
-    private boolean is_deleted;
+    @Column( name = "created_by")
+    private int createdBy;
+    @Column( name = "updated_by")
+    private int updatedBy;
+    @Column( name = "deleted_by")
+    private int deletedBy;
+    @Column( name = "created_on")
+    private Timestamp createdOn;
+    @Column( name = "updated_on")
+    private Timestamp updatedOn;
+    @Column( name = "deleted_on")
+    private Timestamp deletedOn;
+    @Column( name = "is_deleted")
+    private boolean isDeleted;
 
     @ManyToOne
     @JoinColumn(name = "id", nullable = false)
-    private Role role_id;
+    @Column( name = "role_id")
+    private Role roleId;
 
-    public int getId() {
+   
+    public Employee getId() {
         return id;
     }
-    public void setId(int id) {
+    public void setId(Employee id) {
         this.id = id;
-    }
+    } 
     public String getUsername() {
         return username;
     }
@@ -52,54 +68,54 @@ public class User {
     // public void setRole_id(int role_id) {
     //     this.role_id = role_id;
     // }
-    public Role getRole_id() {
-        return role_id;
+    public int getCreatedBy() {
+        return createdBy;
     }
-    public void setRole_id(Role role_id) {
-        this.role_id = role_id;
+    public void setCreatedBy(int createdBy) {
+        this.createdBy = createdBy;
     }
-    public int getCreated_by() {
-        return created_by;
+    public int getUpdatedBy() {
+        return updatedBy;
     }
-    public void setCreated_by(int created_by) {
-        this.created_by = created_by;
+    public void setUpdatedBy(int updatedBy) {
+        this.updatedBy = updatedBy;
     }
-    public int getUpdated_by() {
-        return updated_by;
+    public int getDeletedBy() {
+        return deletedBy;
     }
-    public void setUpdated_by(int updated_by) {
-        this.updated_by = updated_by;
+    public void setDeletedBy(int deletedBy) {
+        this.deletedBy = deletedBy;
     }
-    public int getDeleted_by() {
-        return deleted_by;
+    public Timestamp getCreatedOn() {
+        return createdOn;
     }
-    public void setDeleted_by(int deleted_by) {
-        this.deleted_by = deleted_by;
+    public void setCreatedOn(Timestamp createdOn) {
+        this.createdOn = createdOn;
     }
-    public Timestamp getCreated_on() {
-        return created_on;
+    public Timestamp getUpdatedOn() {
+        return updatedOn;
     }
-    public void setCreated_on(Timestamp created_on) {
-        this.created_on = created_on;
+    public void setUpdatedOn(Timestamp updatedOn) {
+        this.updatedOn = updatedOn;
     }
-    public Timestamp getUpdated_on() {
-        return updated_on;
+    public Timestamp getDeletedOn() {
+        return deletedOn;
     }
-    public void setUpdated_on(Timestamp updated_on) {
-        this.updated_on = updated_on;
+    public void setDeletedOn(Timestamp deletedOn) {
+        this.deletedOn = deletedOn;
     }
-    public Timestamp getDeleted_on() {
-        return deleted_on;
+    public boolean isDeleted() {
+        return isDeleted;
     }
-    public void setDeleted_on(Timestamp deleted_on) {
-        this.deleted_on = deleted_on;
+    public void setDeleted(boolean isDeleted) {
+        this.isDeleted = isDeleted;
     }
-    public boolean isIs_deleted() {
-        return is_deleted;
+    public Role getRoleId() {
+        return roleId;
     }
-    public void setIs_deleted(boolean is_deleted) {
-        this.is_deleted = is_deleted;
+    public void setRoleId(Role roleId) {
+        this.roleId = roleId;
     }
     
-    
+   
 }
