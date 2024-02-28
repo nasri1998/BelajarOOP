@@ -17,7 +17,7 @@ import javax.persistence.Table;
 public class Employee {
     @Id
     @Column( name="id")
-    private int id;
+    private Integer id;
     @Column( name = "first_name")
     private String firstName;
     @Column( name = "last_name")
@@ -26,15 +26,15 @@ public class Employee {
     private LocalDate dateOfBirth;
     @Column( name = "address")
     private String address;
-    // private int department_id;
+    // private Integer department_id;
     @Column( name = "salary")
-    private int salary;
+    private Integer salary;
     @Column( name = "created_by")
-    private int createdBy;
+    private Integer createdBy;
     @Column( name = "updated_by")
-    private int updatedBy;
+    private Integer updatedBy;
     @Column( name = "deleted_by")
-    private int deletedBy;
+    private Integer deletedBy;
     @Column( name = "created_on")
     private Timestamp createdOn;
     @Column( name = "updated_on")
@@ -45,19 +45,19 @@ public class Employee {
     private boolean isDeleted;
 
     @ManyToOne
-    @JoinColumn(name = "id", nullable = false)
-    private Department departmentId;
+    @JoinColumn(name = "department_id", nullable = false)
+    private Department department;
 
-    @OneToMany(mappedBy = "employee_id")
+    @OneToMany(mappedBy = "employee")
     private Set<TravelRequest> travelRequests;
 
-    @OneToOne(mappedBy = "id")
+    @OneToOne(mappedBy = "employee")
     private User users;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
     
@@ -68,10 +68,10 @@ public class Employee {
         this.address = address;
     }
     
-    public int getSalary() {
+    public Integer getSalary() {
         return salary;
     }
-    public void setSalary(int salary) {
+    public void setSalary(Integer salary) {
         this.salary = salary;
     }
 
@@ -93,22 +93,22 @@ public class Employee {
     public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
-    public int getCreatedBy() {
+    public Integer getCreatedBy() {
         return createdBy;
     }
-    public void setCreatedBy(int createdBy) {
+    public void setCreatedBy(Integer createdBy) {
         this.createdBy = createdBy;
     }
-    public int getUpdatedBy() {
+    public Integer getUpdatedBy() {
         return updatedBy;
     }
-    public void setUpdatedBy(int updatedBy) {
+    public void setUpdatedBy(Integer updatedBy) {
         this.updatedBy = updatedBy;
     }
-    public int getDeletedBy() {
+    public Integer getDeletedBy() {
         return deletedBy;
     }
-    public void setDeletedBy(int deletedBy) {
+    public void setDeletedBy(Integer deletedBy) {
         this.deletedBy = deletedBy;
     }
     public Timestamp getCreatedOn() {
@@ -147,12 +147,13 @@ public class Employee {
     public void setTravelRequests(Set<TravelRequest> travelRequests) {
         this.travelRequests = travelRequests;
     }
-    public Department getDepartmentId() {
-        return departmentId;
+    public Department getDepartment() {
+        return department;
     }
-    public void setDepartmentId(Department departmentId) {
-        this.departmentId = departmentId;
+    public void setDepartment(Department department) {
+        this.department = department;
     }
+    
     
     
 }

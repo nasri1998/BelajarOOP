@@ -14,21 +14,23 @@ import javax.persistence.Table;
 @Table(name = "tb_m_user")
 public class User {
     @Id
+    private Integer id;
     @OneToOne
-    @JoinColumn(name = "id", nullable = false)
-    @Column(name = "id")
-    private Employee id;
+    @JoinColumn(name = "id", nullable = false,referencedColumnName = "id")
+    // @Column(name = "id")
+    private Employee employee;
+
     @Column(name = "username")
     private String username;
     @Column(name="password")
     private String password;
-    // private int role_id;
+    // private Integer role_id;
     @Column( name = "created_by")
-    private int createdBy;
+    private Integer createdBy;
     @Column( name = "updated_by")
-    private int updatedBy;
+    private Integer updatedBy;
     @Column( name = "deleted_by")
-    private int deletedBy;
+    private Integer deletedBy;
     @Column( name = "created_on")
     private Timestamp createdOn;
     @Column( name = "updated_on")
@@ -39,17 +41,29 @@ public class User {
     private boolean isDeleted;
 
     @ManyToOne
-    @JoinColumn(name = "id", nullable = false)
-    @Column( name = "role_id")
-    private Role roleId;
+    @JoinColumn(name = "role_id", nullable = false)
+    private Role role;
 
    
-    public Employee getId() {
+    
+    public Integer getId() {
         return id;
     }
-    public void setId(Employee id) {
+    public void setId(Integer id) {
         this.id = id;
-    } 
+    }
+    public Employee getEmployee() {
+        return employee;
+    }
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
+    }
+    public Role getRole() {
+        return role;
+    }
+    public void setRole(Role role) {
+        this.role = role;
+    }
     public String getUsername() {
         return username;
     }
@@ -62,28 +76,28 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-    // public int getRole_id() {
+    // public Integer getRole_id() {
     //     return role_id;
     // }
-    // public void setRole_id(int role_id) {
+    // public void setRole_id(Integer role_id) {
     //     this.role_id = role_id;
     // }
-    public int getCreatedBy() {
+    public Integer getCreatedBy() {
         return createdBy;
     }
-    public void setCreatedBy(int createdBy) {
+    public void setCreatedBy(Integer createdBy) {
         this.createdBy = createdBy;
     }
-    public int getUpdatedBy() {
+    public Integer getUpdatedBy() {
         return updatedBy;
     }
-    public void setUpdatedBy(int updatedBy) {
+    public void setUpdatedBy(Integer updatedBy) {
         this.updatedBy = updatedBy;
     }
-    public int getDeletedBy() {
+    public Integer getDeletedBy() {
         return deletedBy;
     }
-    public void setDeletedBy(int deletedBy) {
+    public void setDeletedBy(Integer deletedBy) {
         this.deletedBy = deletedBy;
     }
     public Timestamp getCreatedOn() {
@@ -110,12 +124,7 @@ public class User {
     public void setDeleted(boolean isDeleted) {
         this.isDeleted = isDeleted;
     }
-    public Role getRoleId() {
-        return roleId;
-    }
-    public void setRoleId(Role roleId) {
-        this.roleId = roleId;
-    }
+    
     
    
 }

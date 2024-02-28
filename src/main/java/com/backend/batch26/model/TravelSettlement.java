@@ -4,26 +4,26 @@ import java.sql.Timestamp;
 import java.util.Set;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
+@Entity
 public class TravelSettlement {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private int id;
-    // private int travel_request_id;
+    private Integer id;
     @Column( name = "travel_fee")
-    private int travelFee;
+    private Integer travelFee;
     @Column( name = "created_by")
-    private int createdBy;
+    private Integer createdBy;
     @Column( name = "updated_by")
-    private int updatedBy;
+    private Integer updatedBy;
     @Column( name = "deleted_by")
-    private int deletedBy;
+    private Integer deletedBy;
     @Column( name = "created_on")
     private Timestamp createdOn;
     @Column( name = "updated_on")
@@ -33,45 +33,44 @@ public class TravelSettlement {
     @Column( name = "is_deleted")
     private boolean isDeleted;
 
-    // @OneToOne(mappedBy = "id")
-    // private TravelRequest travel_request_id;
+    // @OneToOne(mappedBy = "travelSettlement")
+    // private TravelRequest travelRequest;
     
     @OneToOne
     @JoinColumn(name = "id", nullable = false)
-    @Column(name = "travel_request_id")
-    private TravelRequest travelRequestId;
+    private TravelRequest travelRequest;
 
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
     
-    public int getTravelFee() {
+    public Integer getTravelFee() {
         return travelFee;
     }
-    public void setTravelFee(int travelFee) {
+    public void setTravelFee(Integer travelFee) {
         this.travelFee = travelFee;
     }
-    public int getCreatedBy() {
+    public Integer getCreatedBy() {
         return createdBy;
     }
-    public void setCreatedBy(int createdBy) {
+    public void setCreatedBy(Integer createdBy) {
         this.createdBy = createdBy;
     }
-    public int getUpdatedBy() {
+    public Integer getUpdatedBy() {
         return updatedBy;
     }
-    public void setUpdatedBy(int updatedBy) {
+    public void setUpdatedBy(Integer updatedBy) {
         this.updatedBy = updatedBy;
     }
-    public int getDeletedBy() {
+    public Integer getDeletedBy() {
         return deletedBy;
     }
-    public void setDeletedBy(int deletedBy) {
+    public void setDeletedBy(Integer deletedBy) {
         this.deletedBy = deletedBy;
     }
     public Timestamp getCreatedOn() {
@@ -98,11 +97,12 @@ public class TravelSettlement {
     public void setDeleted(boolean isDeleted) {
         this.isDeleted = isDeleted;
     }
-    public TravelRequest getTravelRequestId() {
-        return travelRequestId;
+    
+    public TravelRequest getTravelRequest() {
+        return travelRequest;
     }
-    public void setTravelRequestId(TravelRequest travelRequestId) {
-        this.travelRequestId = travelRequestId;
+    public void setTravelRequest(TravelRequest travelRequest) {
+        this.travelRequest = travelRequest;
     }
     
     

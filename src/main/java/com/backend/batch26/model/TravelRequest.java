@@ -15,11 +15,16 @@ import javax.persistence.Table;
 @Table(name = "tb_tr_travel_request")
 public class TravelRequest {
     @Id
-    @OneToOne(mappedBy = "travelRequestId")
-    @Column(name = "id")
-    private TravelRequest id;
+    private Integer id;
+    @OneToOne(mappedBy = "travelRequest")
+    private TravelSettlement travelSettlement;
+    // @Column(name = "id")
 
-    // private int employee_id;
+    // @OneToOne
+    // @JoinColumn(name = "id", nullable = false)
+    // private TravelSettlement travelSettlement;
+
+    // private Integer employee_id;
     @Column(name = "start_date")
     private LocalDate startDate;
     @Column(name = "end_date")
@@ -30,13 +35,13 @@ public class TravelRequest {
     private String destination;
     @Column(name = "remark")
     private String remark;
-    // private int travel_type_id;
+    // private Integer travel_type_id;
     @Column( name = "created_by")
-    private int createdBy;
+    private Integer createdBy;
     @Column( name = "updated_by")
-    private int updatedBy;
+    private Integer updatedBy;
     @Column( name = "deleted_by")
-    private int deletedBy;
+    private Integer deletedBy;
     @Column( name = "created_on")
     private Timestamp createdOn;
     @Column( name = "updated_on")
@@ -47,21 +52,14 @@ public class TravelRequest {
     private boolean isDeleted;
 
     @ManyToOne
-    @JoinColumn(name = "id", nullable = false)
-    @Column(name = "employee_id")
-    private Employee employeeId;
+    @JoinColumn(name = "employee_id", nullable = false)
+    private Employee employee;
 
     @ManyToOne
-    @JoinColumn(name = "id", nullable = false)
-    @Column(name = "travel_type_id")
-    private TravelType travelTypeId; 
+    @JoinColumn(name = "travel_type_id", nullable = false)
+    private TravelType travelType; 
     
-    public TravelRequest getId() {
-        return id;
-    }
-    public void setId(TravelRequest id) {
-        this.id = id;
-    }
+    
     public LocalDate getStartDate() {
         return startDate;
     }
@@ -80,22 +78,22 @@ public class TravelRequest {
     public void setRequestStatus(String requestStatus) {
         this.requestStatus = requestStatus;
     }
-    public int getCreatedBy() {
+    public Integer getCreatedBy() {
         return createdBy;
     }
-    public void setCreatedBy(int createdBy) {
+    public void setCreatedBy(Integer createdBy) {
         this.createdBy = createdBy;
     }
-    public int getUpdatedBy() {
+    public Integer getUpdatedBy() {
         return updatedBy;
     }
-    public void setUpdatedBy(int updatedBy) {
+    public void setUpdatedBy(Integer updatedBy) {
         this.updatedBy = updatedBy;
     }
-    public int getDeletedBy() {
+    public Integer getDeletedBy() {
         return deletedBy;
     }
-    public void setDeletedBy(int deletedBy) {
+    public void setDeletedBy(Integer deletedBy) {
         this.deletedBy = deletedBy;
     }
     public Timestamp getCreatedOn() {
@@ -136,17 +134,31 @@ public class TravelRequest {
     public void setRemark(String remark) {
         this.remark = remark;
     }
-    public Employee getEmployeeId() {
-        return employeeId;
+    public Integer getId() {
+        return id;
     }
-    public void setEmployeeId(Employee employeeId) {
-        this.employeeId = employeeId;
+    public void setId(Integer id) {
+        this.id = id;
     }
-    public TravelType getTravelTypeId() {
-        return travelTypeId;
+    
+    public Employee getEmployee() {
+        return employee;
     }
-    public void setTravelTypeId(TravelType travelTypeId) {
-        this.travelTypeId = travelTypeId;
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
     }
+    public TravelType getTravelType() {
+        return travelType;
+    }
+    public void setTravelType(TravelType travelType) {
+        this.travelType = travelType;
+    }
+    public TravelSettlement getTravelSettlement() {
+        return travelSettlement;
+    }
+    public void setTravelSettlement(TravelSettlement travelSettlement) {
+        this.travelSettlement = travelSettlement;
+    }
+    
     
 }

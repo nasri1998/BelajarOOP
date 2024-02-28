@@ -15,17 +15,17 @@ import javax.persistence.Table;
 public class TravelType {
     @Id
     @Column(name="id")
-    private int id;
+    private Integer id;
     @Column( name = "name")
     private String name;
     @Column( name = "stock_availability")
-    private int stockAvailability;
+    private Integer stockAvailability;
     @Column( name = "created_by")
-    private int createdBy;
+    private Integer createdBy;
     @Column( name = "updated_by")
-    private int updatedBy;
+    private Integer updatedBy;
     @Column( name = "deleted_by")
-    private int deletedBy;
+    private Integer deletedBy;
     @Column( name = "created_on")
     private Timestamp createdOn;
     @Column( name = "updated_on")
@@ -35,13 +35,13 @@ public class TravelType {
     @Column( name = "is_deleted")
     private boolean isDeleted;
 
-    @OneToMany(mappedBy = "travelTypeId")
+    @OneToMany(mappedBy = "travelType")
     private Set<TravelRequest> travelRequests;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
     public String getName() {
@@ -53,28 +53,28 @@ public class TravelType {
     
     
 
-    public int getStockAvailability() {
+    public Integer getStockAvailability() {
         return stockAvailability;
     }
-    public void setStockAvailability(int stockAvailability) {
+    public void setStockAvailability(Integer stockAvailability) {
         this.stockAvailability = stockAvailability;
     }
-    public int getCreatedBy() {
+    public Integer getCreatedBy() {
         return createdBy;
     }
-    public void setCreatedBy(int createdBy) {
+    public void setCreatedBy(Integer createdBy) {
         this.createdBy = createdBy;
     }
-    public int getUpdatedBy() {
+    public Integer getUpdatedBy() {
         return updatedBy;
     }
-    public void setUpdatedBy(int updatedBy) {
+    public void setUpdatedBy(Integer updatedBy) {
         this.updatedBy = updatedBy;
     }
-    public int getDeletedBy() {
+    public Integer getDeletedBy() {
         return deletedBy;
     }
-    public void setDeletedBy(int deletedBy) {
+    public void setDeletedBy(Integer deletedBy) {
         this.deletedBy = deletedBy;
     }
     public Timestamp getCreatedOn() {

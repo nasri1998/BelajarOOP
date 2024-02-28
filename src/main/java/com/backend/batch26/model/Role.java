@@ -9,34 +9,41 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.springframework.lang.Nullable;
+
 
 @Entity
 @Table(name = "tb_m_role")
 public class Role {
     @Id
     @Column(name = "id")
-    private int id;
+    private Integer id;
     @Column(name ="name")
     private String name;
     @Column( name = "created_by")
-    private int createdBy;
+    @Nullable
+    private Integer createdBy;
+    @Nullable
     @Column( name = "updated_by")
-    private int updatedBy;
+    private Integer updatedBy;
     @Column( name = "deleted_by")
-    private int deletedBy;
+    @Nullable
+    private Integer deletedBy;
     @Column( name = "created_on")
+    @Nullable
     private Timestamp createdOn;
     @Column( name = "updated_on")
+    @Nullable
     private Timestamp updatedOn;
     @Column( name = "deleted_on")
+    @Nullable
     private Timestamp deletedOn;
     @Column( name = "is_deleted")
-    private boolean isDeleted;
+    @Nullable
+    private Boolean isDeleted;
 
-    @OneToMany(mappedBy = "roleId")
+    @OneToMany(mappedBy = "role")
     private Set<User> users;
-
-
 
     public Set<User> getUsers() {
         return users;
@@ -44,7 +51,7 @@ public class Role {
     public void setUsers(Set<User> users) {
         this.users = users;
     }
-    public int getId() {
+    public Integer getId() {
         return id;
     }
     public void setId(int id) {
@@ -56,22 +63,22 @@ public class Role {
     public void setName(String name) {
         this.name = name;
     }
-    public int getCreatedBy() {
+    public Integer getCreatedBy() {
         return createdBy;
     }
-    public void setCreatedBy(int createdBy) {
+    public void setCreatedBy(Integer createdBy) {
         this.createdBy = createdBy;
     }
-    public int getUpdatedBy() {
+    public Integer getUpdatedBy() {
         return updatedBy;
     }
-    public void setUpdatedBy(int updatedBy) {
+    public void setUpdatedBy(Integer updatedBy) {
         this.updatedBy = updatedBy;
     }
-    public int getDeletedBy() {
+    public Integer getDeletedBy() {
         return deletedBy;
     }
-    public void setDeletedBy(int deletedBy) {
+    public void setDeletedBy(Integer deletedBy) {
         this.deletedBy = deletedBy;
     }
     public Timestamp getCreatedOn() {
@@ -92,7 +99,7 @@ public class Role {
     public void setDeletedOn(Timestamp deletedOn) {
         this.deletedOn = deletedOn;
     }
-    public boolean isDeleted() {
+    public Boolean isDeleted() {
         return isDeleted;
     }
     public void setDeleted(boolean isDeleted) {
