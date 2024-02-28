@@ -9,23 +9,27 @@
     <script src='main.js'></script>
 </head>
 <body>
-    <a th:href="@{role/form}">CREATE</a>
+    <a th:href="@{/user/form}">CREATE</a>
     <table>
         <thead>
             <tr>
                 <th>ID</th>
-                <th>Name</th>
+                <th>Username</th>
+                <th>Password</th>
+                <th>Role ID</th>
                 <th>Action</th>
             </tr>
         </thead>
         <tbody>
-            <tr th:each="role : ${roles}">
-                <td th:text="${role.id}"></td>
-                <td th:text="${role.name}"></td>
+            <tr th:each="user : ${users}">
+                <td th:text="${user.id}"></td>
+                <td th:text="${user.username}"></td>
+                <td th:text="${user.password}"></td>
+                <td th:text="${user.role.id}"></td>
                 <td>
-                    <a th:href="@{role/form/{id} (id = ${role.id})}">Edit</a> 
+                    <a th:href="@{/user/form/{id} (id = ${user.id})}">Edit</a> 
                     | 
-                    <form method="post" th:action="@{/role/delete/{id} (id = ${role.id})}">
+                    <form method="post" th:action="@{/user/delete/{id} (id = ${user.id})}">
                         <button type="submit">Delete</button>
 
                     </form>

@@ -129,10 +129,10 @@ public class Employee {
     public void setDeletedOn(Timestamp deletedOn) {
         this.deletedOn = deletedOn;
     }
-    public boolean isDeleted() {
+    public Boolean isDeleted() {
         return isDeleted;
     }
-    public void setDeleted(boolean isDeleted) {
+    public void setDeleted(Boolean isDeleted) {
         this.isDeleted = isDeleted;
     }
     public User getUsers() {

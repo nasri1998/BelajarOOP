@@ -30,7 +30,7 @@ public class Department {
     @Column( name = "deleted_on")
     private Timestamp deletedOn;
     @Column( name = "is_deleted")
-    private boolean isDeleted;
+    private Boolean isDeleted;
 
     @OneToMany(mappedBy = "department")
     private Set<Employee> employees;
@@ -90,10 +90,10 @@ public class Department {
     public void setDeletedOn(Timestamp deletedOn) {
         this.deletedOn = deletedOn;
     }
-    public boolean isDeleted() {
+    public Boolean isDeleted() {
         return isDeleted;
     }
-    public void setDeleted(boolean isDeleted) {
+    public void setDeleted(Boolean isDeleted) {
         this.isDeleted = isDeleted;
     }
 

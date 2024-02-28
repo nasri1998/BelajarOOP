@@ -31,7 +31,7 @@ public class TravelSettlement {
     @Column( name = "deleted_on")
     private Timestamp deletedOn;
     @Column( name = "is_deleted")
-    private boolean isDeleted;
+    private Boolean isDeleted;
 
     // @OneToOne(mappedBy = "travelSettlement")
     // private TravelRequest travelRequest;
@@ -91,10 +91,10 @@ public class TravelSettlement {
     public void setDeletedOn(Timestamp deletedOn) {
         this.deletedOn = deletedOn;
     }
-    public boolean isDeleted() {
+    public Boolean isDeleted() {
         return isDeleted;
     }
-    public void setDeleted(boolean isDeleted) {
+    public void setDeleted(Boolean isDeleted) {
         this.isDeleted = isDeleted;
     }
     

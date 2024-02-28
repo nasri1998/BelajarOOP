@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title></title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+</head>
+<body>
+    <div>
+        <form method="post" th:action="@{/user/save}"> 
+            <div>
+                <input id="id" type="text" th:field="${user.id}" hidden>
+                <input id="username" type="text" th:field="${user.username}">
+                <!-- <input id="username" type="text" th:field="*{username}"> -->
+                <input id="password" type="text" th:field="${user.password}">
+                <!-- <input id="roleid" type="text" th:field="${role.name}"> -->
+                <select id="roleid" name="roleId" th:field="${user.role.id}">
+                    <option th:each="role : ${roles}" th:value="${role.id}" th:text="${role.name}"></option>
+                </select>
+            </div>
+            <div>
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

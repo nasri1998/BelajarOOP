@@ -27,9 +27,13 @@ public class RoleController {
         return "role/index";
     }
     
-    @GetMapping("form")
-    public String form(Model model){
-        model.addAttribute("role", new Role());
+    @GetMapping(value = {"form", "form/{id}"})
+    public String form(@PathVariable(required = false) Integer id, Model model){
+        if (id != null) {
+            model.addAttribute("role", roleRepository.findById(id).orElse(null));
+        }else{
+            model.addAttribute("role", new Role());
+        }
         return "role/form";
     }
 
@@ -42,23 +46,15 @@ public class RoleController {
         }
         return "role/form";
     }
-    
-    @GetMapping("/edit/{id}")
-    public String edit(@PathVariable("id") Integer id, Model model){
-        Role role = roleRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Role id : " + id + "not found"));
-        model.addAttribute("edit", role);
-        return "role/edit";
-    }
 
-    @PostMapping("update")
-    public String edit(Role role){
-        roleRepository.save(role);
-        Boolean result = roleRepository.findById(role.getId()).isPresent();
-        if (result) {
+    @PostMapping("delete/{id}")
+    public String delete(@PathVariable(required = true) Integer id){
+        roleRepository.deleteById(id);
+        Boolean result = roleRepository.findById(id).isPresent();
+        if (!result) {
             return "redirect:/role";
         }
-        return "role/form";
-        
+        return "redirect:/role";
     }
     
 }
