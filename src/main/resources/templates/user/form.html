@@ -12,7 +12,7 @@
     <div>
         <form method="post" th:action="@{/user/save}"> 
             <div>
-                <input id="id" type="text" th:field="${user.id}" hidden>
+                <input id="id" type="text" th:field="${user.id}">
                 <input id="username" type="text" th:field="${user.username}">
                 <!-- <input id="username" type="text" th:field="*{username}"> -->
                 <input id="password" type="text" th:field="${user.password}">
